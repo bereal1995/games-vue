@@ -1,0 +1,56 @@
+$PRIMARY_COLOR: #007bff;
+
+nav, header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+main, header {
+  border-left: 1px solid #ced4da;
+}
+
+header {
+  padding: .5rem;
+  margin-left: 48px;
+  border-bottom: 1px solid #ced4da;
+  background-color: #fff;
+  min-height: 51px;
+
+  p {
+    display: flex;
+    align-content: center;
+    margin: 0;
+    text-transform: uppercase;
+  }
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  max-width: 48px;
+
+  .nav-link {
+    cursor: pointer;
+  }
+
+  a.nav-link  {
+    color: #495057;
+  }
+
+  .nav-link.active, a.nav-link.active {
+    color: $PRIMARY_COLOR;
+  }
+
+  svg {
+    font-size: 1.75rem !important;
+  }
+}
+
+main {
+  margin-left: 48px;
+  margin-top: 51px;
+  min-height: 194px;
+}

@@ -2,7 +2,7 @@
   <div id="app">
     <Nav></Nav>
     <main>
-      <Header :title="this.$route.name"></Header>
+      <Header></Header>
       <section class="contents">
         <router-view></router-view>
       </section>

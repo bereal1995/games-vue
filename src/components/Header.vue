@@ -1,13 +1,9 @@
 <template>
-  <header>{{ title }}</header>
+  <header>{{ this.$route.name }}</header>
 </template>
 
 <script>
 export default {
-  props: {
-    title: {
-      default: 'Header'
-    }
-  }
+
 }
 </script>

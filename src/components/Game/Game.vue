@@ -2,7 +2,7 @@
   <div>
     <Wait v-if="rpsState.state === 'waiting'"></Wait>
     <Play v-if="rpsState.state === 'play'" :myKey="this.key"></Play>
-    <Result v-if="rpsState.state === 'result'"></Result>
+    <Result v-if="rpsState.state === 'result'" :myKey="this.key"></Result>
   </div>
 </template>
 
@@ -12,6 +12,7 @@ import Play from './Play.vue'
 import Result from './Result.vue'
 import {getLastItem} from "@/utlls/urlUtill";
 import {getItem} from "@/utlls/storageUtill";
+import _ from 'lodash'
 
 export default {
   components: {
@@ -43,7 +44,7 @@ export default {
         data: rpsState,
         path: ''
       })
-    }else if (rpsState.state === 'play' && rpsState.host !== getItem('myUUID')
+    } else if (rpsState.state === 'play' && rpsState.host !== getItem('myUUID')
         && rpsState.games[rpsState.games.length - 1].host
         && rpsState.games[rpsState.games.length - 1].challenger
     ) {
@@ -51,6 +52,22 @@ export default {
         key: this.key,
         path: 'state',
         data: 'result',
+      })
+    } else if (rpsState.state === 'result' && rpsState.again.host && rpsState.again.challenger) {
+      const rpsStateCopy = _.cloneDeep(rpsState);
+      rpsStateCopy.state = "play";
+      rpsStateCopy.games.push({
+        host: '',
+        challenger: '',
+      });
+      rpsStateCopy.again = {
+        host: '',
+        challenger: '',
+      }
+      this.$store.dispatch('rpsUpdate', {
+        key: this.key,
+        path: '',
+        data:  rpsStateCopy,
       })
     }
   },

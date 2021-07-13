@@ -53,5 +53,8 @@ export const moduleRps = {
         thisStore.commit('rpsListen', data.val())
       });
     },
+    rpsUpdate(thisStore, payload){
+      fireDatabase.ref(`rockPaperScissors/${payload.key}/${payload.path}`).set(payload.data);
+    }
   }
 }

@@ -101,14 +101,7 @@
           return S
         }
       },
-      getChoice(item) {
-        if(item === 'S')
-          return 0;
-        else if(item === 'R')
-          return 1;
-        else
-          return -1;
-      },
+
       getGamesResult(games) {
         const host = {
           win: 0,
@@ -120,12 +113,15 @@
           loose: 0,
           draw: 0,
         }
+
         for (let i = 0; i < games.length; i++) {
-          if (this.getChoice(games[i].host) - this.getChoice(games[i].challenger) === 0) {
+          if (games[i].host === games[i].challenger) {
             host.draw += 1;
             challenger.draw += 1;
-          } else if (this.getChoice(games[i].host) - this.getChoice(games[i].challenger) === 1
-              || this.getChoice(games[i].host) - this.getChoice(games[i].challenger) === -2
+          } else if (
+              (games[i].host === 'R' && games[i].challenger === 'S')
+              || (games[i].host === 'P' && games[i].challenger === 'R')
+              || (games[i].host === 'S' && games[i].challenger === 'P')
           ) {
             host.win += 1;
             challenger.loose += 1;
@@ -141,10 +137,13 @@
         let host = 'outline-secondary ';
         let challenger = 'outline-secondary';
 
-        if (this.getChoice(game.host) - this.getChoice(game.challenger) === 0) {
-          return {host, challenger}
-        } else if (this.getChoice(game.host) - this.getChoice(game.challenger) === 1
-            || this.getChoice(game.host) - this.getChoice(game.challenger) === -2
+        if (game.host === game.challenger) {
+          host = 'outline-secondary';
+          challenger = 'outline-secondary';
+        } else if (
+            (game.host === 'R' && game.challenger === 'S')
+            || (game.host === 'P' && game.challenger === 'R')
+            || (game.host === 'S' && game.challenger === 'P')
         ) {
           rpsWho === 'host' ? host = 'primary' : challenger = 'danger';
         } else {

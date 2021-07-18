@@ -1,3 +1,5 @@
 <template>
-  <div></div>
+  <div>
+    <p>Welcome rpsGame feat.Vue</p>
+  </div>
 </template>

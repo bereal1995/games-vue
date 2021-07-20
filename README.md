@@ -9,13 +9,23 @@ https://github.com/bereal1995/games
 ### 목표
 - 저번에 리액트로 만들었던 가위바위보게임을 뷰로 만들어보자!
 
-### 간단한 기술 스택
-- vue
-- vuex (상태관리, 외부통신)
-- firebase (데이터베이스, 배포)
-- bootstrap (UI/UX 프레임워)
-- dotenv (환경변수 관리)
+### 기술 스택
+- vuex
+    - redux처럼 상태관리를 위해서 사용
+    - firebase를 통해서 데이터값을 가져오기 위해서는 비동기 작업을 해야하는데  
+      이때, 데이터를 스토어에 저장하기 위해 사용
+- firebase
+    - 실시간으로 데이터연동을 통한 온라인 게임플레이를 위해 realtimeDatabase를 사용
+    - 배포를 하기 위해 firebase hosting 사용
+- bootstrap
+    - 디자인이 없는 상황에서 안정적이고 완성도있는 UI를 사용하기 위해 선택
+    - UI관련 라이브러리중에서 제일 사용자가 많아 선택 (npmtrend 기준)
+- dotenv
+    - 외부에 노출되면 안되는 환경변수 관리를 위해 설치  
+      ex) API_KEY, APP_ID ....
 - vue-uuid (고유 키 값 생성)
+    - 게임 방을 만들때 사용자를 구분하기 위해 사용
+    - 이 uid값으로 host, challenger 구분을 한다.
 
 ## 폴더트리 구조
 ```text
